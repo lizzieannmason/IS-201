@@ -1,0 +1,77 @@
+/* Requirement 3.5: Custom background color for the whole page */
+body {
+    background-color: #fa9ad8;
+    margin: 0;
+    padding: 0;
+    /* Requirement 4.3: Font family specification */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    /* Requirement 4.2: Font color specification */
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Requirement 4.4: Div styling (Hero Section) */
+.hero-section {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Requirement 4.1: Style definition for headers */
+h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+/* Requirement 4.4: Div styling (Content Container) */
+.content-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Requirement 4.1: Style definition for images */
+.fashion-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+/* Requirement 4.1: Style definition for links */
+.nav-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d4af37; /* Gold color */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.nav-button:hover {
+    background-color: #b8962e;
+}
+
+/* Requirement 4.4: Div styling (Data Section) */
+.data-section {
+    padding: 40px;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+footer a {
+    color: #d4af37;
+    text-decoration: none;
+}
