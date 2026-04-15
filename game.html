@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Label Look-Up | Fashion Game</title>
+    <style>
+        /* CSS Section */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #fdfaf6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .game-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            border-top: 5px solid #d4af37;
+        }
+
+        h1 { color: #1a1a1a; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        p { color: #666; font-size: 0.9rem; }
+
+        .hint-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-style: italic;
+            border-left: 4px solid #d4af37;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            outline: none;
+        }
+
+        button {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover { background: #d4af37; }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            height: 20px;
+        }
+
+        .score { margin-top: 20px; font-size: 0.8rem; color: #888; }
+
+        .back-link {
+            margin-top: 20px;
+            display: block;
+            text-decoration: none;
+            color: #d4af37;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>The Label Look-Up</h1>
+        <p>Can you guess the fashion house from the clue?</p>
+
+        <div class="hint-box" id="hint">Loading hint...</div>
+
+        <input type="text" id="guessInput" placeholder="Enter brand name...">
+        <br>
+        <button onclick="checkGuess()">Submit Answer</button>
+
+        <div id="message"></div>
+
+        <div class="score">Score: <span id="scoreVal">0</span></div>
+        
+        <a href="fromscratch.html" class="back-link">← Back to Fashion Blog</a>
+    </div>
+
+    <script>
+        // JavaScript Section
+        const fashionBrands = [
+            { name: "Gucci", hint: "An Italian luxury brand famous for its double-G logo and green/red stripes." },
+            { name: "Chanel", hint: "Known for the 'Little Black Dress' and No. 5 perfume." },
+            { name: "Prada", hint: "Miuccia's powerhouse known for nylon bags and understated luxury." },
+            { name: "Nike", hint: "The titan of streetwear and athletic shoes with a 'Swoosh'." },
+            { name: "Hermes", hint: "Famous for the Birkin bag and iconic orange boxes." },
+            { name: "Louis Vuitton", hint: "Started as a trunk maker; famous for its brown monogram canvas." },
+            { name: "Balenciaga", hint: "Known for triple-S sneakers and avant-garde silhouettes." }
+        ];
+
+        let currentBrand;
+        let score = 0;
+
+        function nextQuestion() {
+            const randomIndex = Math.floor(Math.random() * fashionBrands.length);
+            currentBrand = fashionBrands[randomIndex];
+            document.getElementById('hint').textContent = currentBrand.hint;
+            document.getElementById('guessInput').value = "";
+            document.getElementById('message').textContent = "";
+        }
+
+        function checkGuess() {
+            const userGuess = document.getElementById('guessInput').value.trim().toLowerCase();
+            const correctAnswer = currentBrand.name.toLowerCase();
+
+            if (userGuess === correctAnswer) {
+                score++;
+                document.getElementById('scoreVal').textContent = score;
+                document.getElementById('message').style.color = "green";
+                document.getElementById('message').textContent = "Correct! You're a fashionista.";
+                setTimeout(nextQuestion, 1500);
+            } else {
+                document.getElementById('message').style.color = "red";
+                document.getElementById('message').textContent = "Not quite! Try again.";
+            }
+        }
+
+        // Initialize the game
+        nextQuestion();
+    </script>
+</body>
+</html>
